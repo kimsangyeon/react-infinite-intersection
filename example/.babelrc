@@ -1,0 +1,10 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react",
+    "@babel/preset-typescript"  // 추가된 부분
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties"
+  ]
+}
