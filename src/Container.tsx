@@ -16,7 +16,7 @@ function Container({ children, element = 'div', style }: ContainerProps) {
 Container.defaultProps = {
   children: null,
   element: 'div',
-  style: {},
+  style: null,
 };
 
 export default Container;
