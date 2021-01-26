@@ -6,7 +6,10 @@ module.exports = {
   entry: './src/InfiniteIntersection.tsx',
   output: {
     path: path.resolve(__dirname, 'dist/js'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   module: {
     rules: [
