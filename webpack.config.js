@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   devtool: 'source-map',
-  entry: './src/index.ts',
+  entry: './src/InfiniteScroll.tsx',
   output: {
     path: path.resolve(__dirname, 'dist/js'),
     filename: 'bundle.js'
