@@ -1,14 +1,13 @@
 {
   "name": "react-infinite-intersection",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Infinite Scroll Intersection Component",
   "main": "InfiniteIntersection.tsx",
   "scripts": {
     "build": "webpack",
     "type-check": "tsc"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Luffy Yeon",
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
@@ -22,5 +21,15 @@
     "typescript": "^4.1.3",
     "webpack": "^5.17.0",
     "webpack-cli": "^4.4.0"
-  }
+  },
+  "keywords": [
+    "react",
+    "infinite",
+    "intersection",
+    "scroll",
+    "component"
+  ],
+  "homepage": "https://github.com/kimsangyeon/react-infinite-intersection",
+  "license": "(MIT OR Apache-2.0)",
+  "files": ["dist"]
 }
