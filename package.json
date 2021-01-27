@@ -1,8 +1,9 @@
 {
   "name": "react-infinite-intersection",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Infinite Scroll Intersection Component",
-  "main": "InfiniteIntersection.tsx",
+  "module": "dist/InfiniteIntersection.js",
+  "main": "dist/InfiniteIntersection.js",
   "scripts": {
     "build": "webpack",
     "type-check": "tsc"

@@ -1,12 +1,11 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
-  devtool: 'source-map',
+  mode: 'production',
   entry: './src/InfiniteIntersection.tsx',
   output: {
     path: path.resolve(__dirname, 'dist/js'),
-    filename: 'bundle.js',
+    filename: 'InfiniteIntersection.js',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
