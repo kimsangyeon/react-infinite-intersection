@@ -1,6 +1,6 @@
 {
   "name": "react-infinite-intersection",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Infinite Scroll Intersection Component",
   "module": "dist/InfiniteIntersection.js",
   "main": "dist/InfiniteIntersection.js",
