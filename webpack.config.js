@@ -1,7 +1,8 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
+  devtool: 'source-map',
   entry: './src/InfiniteIntersection.tsx',
   output: {
     path: path.resolve(__dirname, 'dist/js'),
