@@ -14,7 +14,15 @@ type InfiniteIntersectionProps = {
 /**
  * Infinite Scroll Intersection Control Component
  */
-function InfiniteIntersection({ children, callback, root, rootMargin, threshold, element, style }: InfiniteIntersectionProps) {
+function InfiniteIntersection({
+  children,
+  callback,
+  root,
+  rootMargin,
+  threshold,
+  element,
+  style
+}: InfiniteIntersectionProps) {
   const elIntersection = useRef<HTMLDivElement>(null);
   const onIntersection = (entries: Array<IntersectionObserverEntry>) => {
     entries.forEach((entry: IntersectionObserverEntry) => {

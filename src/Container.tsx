@@ -9,14 +9,14 @@ type ContainerProps = {
 /**
  * Infinite Scroll Container Component
  */
-function Container({ children, element = 'div', style }: ContainerProps) {
+function Container({ children, element = 'div', style = {} }: ContainerProps) {
   return React.createElement(element, { style }, children);
 }
 
 Container.defaultProps = {
   children: null,
   element: 'div',
-  style: null,
+  style: {},
 };
 
 export default Container;
