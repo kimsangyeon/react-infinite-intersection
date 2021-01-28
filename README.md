@@ -15,12 +15,11 @@ npm install --save react-infinite-intersection
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-infinite-intersection'
-import 'react-infinite-intersection/dist/index.css'
+import InfiniteIntersection from 'react-infinite-intersection'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <InfiniteIntersection />
   }
 }
 ```
