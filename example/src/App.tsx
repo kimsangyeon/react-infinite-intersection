@@ -1,12 +1,16 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import InfiniteIntersection from 'react-infinite-intersection';
 
 const App = () => {
-  const childIdx = useRef(5);
-  const [children, setChildren] = useState([0, 1, 2, 3, 4, 5]);
+  const [children, setChildren] = useState(5);
   const callback = useCallback(() => {
-      setChildren([...children, ++childIdx.current]);
+      setChildren(state => ++state);
   }, [children, setChildren]);
+
+  let childrenList = [];
+  for (let i = 0; i < children; i++) {
+    childrenList.push(i);
+  }
   return (
     <div id="app">
       <InfiniteIntersection
@@ -17,7 +21,7 @@ const App = () => {
         style={{}}
       >
         {
-          children.map(child => <ReactImage key={child} />)
+          childrenList.map(child => <ReactImage key={child} />)
         }
       </InfiniteIntersection>
     </div>
