@@ -4,7 +4,7 @@ import Container from './Container';
 type InfiniteIntersectionProps = {
   children: ReactNode,
   callback: () => void,
-  root?: HTMLElement,
+  root?: HTMLElement | null,
   rootMargin?: string,
   threshold?: number,
   element?: string,
@@ -23,7 +23,7 @@ function InfiniteIntersection({
   element,
   style
 }: InfiniteIntersectionProps) {
-  const elIntersection = useRef<HTMLDivElement>(null);
+  const intersectionRef = useRef<HTMLDivElement>(null);
   const onIntersection = (entries: Array<IntersectionObserverEntry>) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
       if (!entry.isIntersecting) return;
@@ -35,24 +35,24 @@ function InfiniteIntersection({
   };
 
   useEffect(() => {
-    if (!elIntersection.current) return;
+    if (!intersectionRef.current) return;
     const io: IntersectionObserver = new IntersectionObserver(onIntersection, {
       root,
       rootMargin,
       threshold,
     });
-    io.observe(elIntersection.current);
+    io.observe(intersectionRef.current);
 
     return () => {
-      if (!elIntersection.current) return;
-      io.unobserve(elIntersection.current);
+      if (!intersectionRef.current) return;
+      io.unobserve(intersectionRef.current);
     };
   }, []);
 
   return (
     <Container element={element} style={style}>
       {children}
-      <div ref={elIntersection}></div>
+      <div ref={intersectionRef}></div>
     </Container>
   )
 }
