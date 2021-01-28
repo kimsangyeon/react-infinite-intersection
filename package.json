@@ -1,6 +1,6 @@
 {
   "name": "react-infinite-intersection",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Made with create-react-library",
   "author": "Luffy Yeon",
   "license": "MIT",
@@ -59,5 +59,15 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "react",
+    "component",
+    "react-component",
+    "infinite",
+    "scroll",
+    "infinite-scroll",
+    "intersection",
+    "intersectionObserver"
   ]
 }
