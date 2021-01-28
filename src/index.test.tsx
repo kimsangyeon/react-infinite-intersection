@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import InfiniteIntersectionProps from '.'
 
-describe('ExampleComponent', () => {
+describe('InfiniteIntersectionProps', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(InfiniteIntersectionProps).toBeTruthy()
   })
 })

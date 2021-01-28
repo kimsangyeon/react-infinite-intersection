@@ -2,12 +2,11 @@ import React, { ReactNode, useEffect, useRef } from 'react';
 import Container from './Container';
 
 type InfiniteIntersectionProps = {
-  root: HTMLElement,
-  rootMargin: string,
-  threshold: number,
-  callback: () => void,
-
   children: ReactNode,
+  callback: () => void,
+  root?: HTMLElement,
+  rootMargin?: string,
+  threshold?: number,
   element?: string,
   style?: {},
 }
@@ -15,7 +14,7 @@ type InfiniteIntersectionProps = {
 /**
  * Infinite Scroll Intersection Control Component
  */
-function InfiniteIntersection({ root, rootMargin, threshold, callback, children, element, style }: InfiniteIntersectionProps) {
+function InfiniteIntersection({ children, callback, root, rootMargin, threshold, element, style }: InfiniteIntersectionProps) {
   const elIntersection = useRef<HTMLDivElement>(null);
   const onIntersection = (entries: Array<IntersectionObserverEntry>) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
@@ -51,13 +50,13 @@ function InfiniteIntersection({ root, rootMargin, threshold, callback, children,
 }
 
 InfiniteIntersection.defaultProps = {
+  children: null,
+  callback: null,
   root: null,
   rootMargin: '',
   threshold: 0,
-  callback: null,
   element: 'div',
   style: {},
-  children: null,
 };
 
 export default InfiniteIntersection;
