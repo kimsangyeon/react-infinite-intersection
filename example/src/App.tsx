@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import InfiniteIntersection from 'react-infinite-intersection';
 
 const App = () => {
-  const appRef = useRef(null);
+  const appRef = useRef<HTMLDivElement>(null);
+  const intersectionRef = useRef<HTMLButtonElement | any>(null);
   const [children, setChildren] = useState<string[]>([]);
   const callback = useCallback(() => {
       setChildren((state: string[]) => {
@@ -20,9 +21,15 @@ const App = () => {
     setChildren(children);
   }, []);
 
+  const onClick = () => {
+    if (!intersectionRef.current) return;
+    intersectionRef.current.unobserve();
+  };
+
   return (
     <>
       <h2>React Infinite Intersection Componenet Example</h2>
+      <button onClick={onClick}>unObserve</button>
       <div id="app" ref={appRef}>
         <InfiniteIntersection
           callback={callback}
@@ -31,6 +38,7 @@ const App = () => {
           threshold={0}
           element={'ul'}
           style={{}}
+          ref={intersectionRef}
         >
           {
             children.map(child => <ReactImage key={child} />)
