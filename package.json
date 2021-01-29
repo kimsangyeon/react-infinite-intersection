@@ -1,10 +1,16 @@
 {
   "name": "react-infinite-intersection",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Made with create-react-library",
   "author": "Luffy Yeon",
   "license": "MIT",
-  "repository": "Luffy Yeon/react-infinite-intersection",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kimsangyeon/react-infinite-intersection"
+  },
+  "bugs": {
+    "url": "https://github.com/kimsangyeon/react-infinite-intersection/issues"
+  },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
