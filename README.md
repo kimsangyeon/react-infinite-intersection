@@ -46,6 +46,7 @@ const App = () => {
           threshold={intersection observer threshold option}
           element={container element tag type}
           style={container element tag style}
+          ref={intersection component ref}
         >
           {
             children.map(child => <ReactImage key={child} />)
@@ -58,6 +59,22 @@ const App = () => {
 ```
 
 <br>
+
+### intersection observer unobserve
+
+```tsx
+const intersectionRef = useRef<HTMLButtonElement>(null);
+
+// unobserve
+intersectionRef.current.unobserve();
+
+<InfiniteIntersection
+  ref={intersection component ref}
+>
+
+```
+
+<br><br>
 
 ## License
 

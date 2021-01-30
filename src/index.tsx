@@ -1,9 +1,9 @@
-import React, { ReactNode, useEffect, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef, useCallback, useImperativeHandle, forwardRef } from 'react';
 import Container from './Container';
 
 type InfiniteIntersectionProps = {
   children: ReactNode,
-  callback: () => void,
+  callback: (() => void) | null,
   root?: HTMLElement | null,
   rootMargin?: string,
   threshold?: number,
@@ -14,7 +14,7 @@ type InfiniteIntersectionProps = {
 /**
  * Infinite Scroll Intersection Control Component
  */
-function InfiniteIntersection({
+const InfiniteIntersection = forwardRef(({
   children,
   callback,
   root,
@@ -22,9 +22,8 @@ function InfiniteIntersection({
   threshold,
   element,
   style
-}: InfiniteIntersectionProps) {
-  const intersectionRef = useRef<HTMLDivElement>(null);
-  const onIntersection = (entries: Array<IntersectionObserverEntry>) => {
+}: InfiniteIntersectionProps, ref) => {
+  const onIntersection = useCallback((entries: Array<IntersectionObserverEntry>) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
       if (!entry.isIntersecting) return;
 
@@ -32,30 +31,46 @@ function InfiniteIntersection({
         callback();
       }
     });
-  };
+  }, []);;
+
+  const intersectionTargetRef = useRef<HTMLDivElement>(null);
+  const intersectionObserveRef = useRef(new IntersectionObserver(onIntersection, {
+    root,
+    rootMargin,
+    threshold,
+  }));
+
+  const onbserve = useCallback(() => {
+    const io = intersectionObserveRef.current;
+    const ioTarget = intersectionTargetRef.current;
+    if (!io || !ioTarget) return;
+    io.observe(ioTarget);
+  }, [intersectionObserveRef, intersectionTargetRef]);
+
+  const unobserve = useCallback(() => {
+    const io = intersectionObserveRef.current;
+    const ioTarget = intersectionTargetRef.current
+    if (!io || !ioTarget) return;
+    io.unobserve(ioTarget);
+  }, [intersectionObserveRef, intersectionTargetRef]);
 
   useEffect(() => {
-    if (!intersectionRef.current) return;
-    const io: IntersectionObserver = new IntersectionObserver(onIntersection, {
-      root,
-      rootMargin,
-      threshold,
-    });
-    io.observe(intersectionRef.current);
+    onbserve();
 
-    return () => {
-      if (!intersectionRef.current) return;
-      io.unobserve(intersectionRef.current);
-    };
+    return unobserve;
   }, []);
+
+  useImperativeHandle(ref, () => ({
+    unobserve
+  }));
 
   return (
     <Container element={element} style={style}>
       {children}
-      <div ref={intersectionRef}></div>
+      <div ref={intersectionTargetRef}></div>
     </Container>
   )
-}
+});
 
 InfiniteIntersection.defaultProps = {
   children: null,
