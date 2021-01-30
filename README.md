@@ -66,7 +66,7 @@ const App = () => {
 const intersectionRef = useRef<HTMLButtonElement>(null);
 
 // unobserve
-intersectionRef.current.unobserve 
+intersectionRef.current.unobserve();
 
 <InfiniteIntersection
   ref={intersection component ref}
